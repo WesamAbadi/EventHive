@@ -21,11 +21,11 @@ if (isset($_POST['email'])) {
             $_SESSION['username'] = $user['username'];
 
 
-            echo "done";
+            echo "Login successful!";
             die();
         }
         else {
-            echo "error";
+            echo "error while logging in";
         }
         $stm->close();
     } else {
