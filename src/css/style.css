@@ -1,0 +1,209 @@
+/* Common Styling */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: #f3f3f3;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 400px;
+    margin: 0 auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+}
+
+form {
+    margin-top: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    color: #333;
+}
+
+input[type="text"],
+input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+input[type="submit"] {
+    background-color: #4CAF50;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+.error {
+    color: red;
+    margin-top: 10px;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.text-link {
+    color: #4CAF50;
+}
+
+.text-link:hover {
+    text-decoration: underline;
+}
+
+/* Specific Styling for login.php */
+.login-form {
+    margin-top: 50px;
+}
+
+/* Specific Styling for register.php */
+.register-form {
+    margin-top: 20px;
+}
+
+/* Styling for the Index page */
+.event-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.event {
+    width: 350px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin: 10px;
+    padding: 15px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.event h3 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.event p {
+    margin-top: 0;
+    margin-bottom: 10px;
+    color: #777;
+}
+
+.event-likes {
+    color: #555;
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+.like-button {
+    background-color: #4CAF50;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    padding: 8px 12px;
+    cursor: pointer;
+}
+
+.like-button:hover {
+    background-color: #45a049;
+}
+/* Common Styling */
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: #f3f3f3;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+}
+
+/* Styling for the Index page */
+.event-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.event {
+    width: 350px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin: 10px;
+    padding: 15px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+}
+
+.event:hover {
+    transform: translateY(-5px);
+}
+
+.event h3 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    color: #333;
+    font-size: 18px;
+}
+
+.event p {
+    margin-top: 0;
+    margin-bottom: 10px;
+    color: #777;
+    font-size: 14px;
+}
+
+.event-likes {
+    color: #555;
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+.like-button {
+    background-color: #4CAF50;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    padding: 8px 12px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s;
+}
+
+.like-button:hover {
+    background-color: #45a049;
+}
+
+.no-events {
+    text-align: center;
+    color: #777;
+    font-size: 18px;
+    margin-top: 50px;
+}

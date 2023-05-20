@@ -1,8 +1,14 @@
 <?php
+// Initialize the session
+session_start();
 
-include('includes/config.php');
+// Unset all of the session variables
+$_SESSION = array();
 
+// Destroy the session
 session_destroy();
 
-header('Location: /eventhive');
-die();
+// Redirect to the login page
+header('Location: login.php');
+exit;
+?>

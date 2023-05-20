@@ -11,30 +11,30 @@ if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true) {
     exit;
 }
 
-// Process the login form
+// Process the registration form
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['username']) && isset($_POST['password'])) {
     $username = $_POST['username'];
-    $password = $_POST['password'];
+    $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
 
-    // Retrieve the user from the database
-    $sql = "SELECT id, username, password FROM users WHERE username = ?";
+    // Check if the username is already taken
+    $sql = "SELECT id FROM users WHERE username = ?";
     $stmt = mysqli_prepare($conn, $sql);
     mysqli_stmt_bind_param($stmt, 's', $username);
     mysqli_stmt_execute($stmt);
-    $result = mysqli_stmt_get_result($stmt);
-    $row = mysqli_fetch_assoc($result);
+    mysqli_stmt_store_result($stmt);
 
-    if ($row && password_verify($password, $row['password'])) {
-        // Store user information in session variables
-        $_SESSION['loggedin'] = true;
-        $_SESSION['id'] = $row['id'];
-        $_SESSION['username'] = $row['username'];
+    if (mysqli_stmt_num_rows($stmt) === 0) {
+        // Insert a new user record
+        $sql = "INSERT INTO users (username, password) VALUES (?, ?)";
+        $stmt = mysqli_prepare($conn, $sql);
+        mysqli_stmt_bind_param($stmt, 'ss', $username, $password);
+        mysqli_stmt_execute($stmt);
 
-        // Redirect to the home page
-        header('Location: index.php');
+        // Redirect to the login page
+        header('Location: login.php');
         exit;
     } else {
-        $loginError = 'Invalid username or password.';
+        $registerError = 'Username is already taken.';
     }
 }
 
@@ -44,7 +44,7 @@ mysqli_close($conn);
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Login - Event Manager</title>
+    <title>Register - Event Manager</title>
     <style>
         /* Common Styling */
         body {
@@ -173,12 +173,11 @@ mysqli_close($conn);
         }
 
     </style>
-    <link rel="stylesheet" type="text/css" href="/eventhive/src/css/style.css">
 
 </head>
 <body>
 <div class="container">
-    <h1>Login</h1>
+    <h1>Register</h1>
     <form action="" method="POST">
         <div>
             <label for="username">Username:</label>
@@ -188,14 +187,14 @@ mysqli_close($conn);
             <label for="password">Password:</label>
             <input type="password" name="password" id="password" required>
         </div>
-        <?php if (isset($loginError)) : ?>
-            <div class="error"><?php echo $loginError; ?></div>
+        <?php if (isset($registerError)) : ?>
+            <div class="error"><?php echo $registerError; ?></div>
         <?php endif; ?>
         <div>
-            <input type="submit" value="Login">
+            <input type="submit" value="Register">
         </div>
     </form>
-    <p>Don't have an account? <a href="register.php">Register</a></p>
+    <p>Already have an account? <a href="login.php">Login</a></p>
 </div>
 </body>
 </html>
